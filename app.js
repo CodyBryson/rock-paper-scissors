@@ -19,6 +19,7 @@ function play(name) {
   checkWinner();
   announceWinner();
 }
+
 function computerChoice() {
   let computerNumber = Math.floor(Math.random() * 10);
 
@@ -113,8 +114,6 @@ function checkWinner(player, computer) {
     }
   }
 }
-
-
 
 play()
 
