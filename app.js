@@ -13,8 +13,13 @@ const results = {
   },
 }
 
-function play() {
+function play(name) {
   let playerChoice = results[name]
+  computerChoice();
+  checkWinner();
+  announceWinner();
+}
+function computerChoice() {
   let computerNumber = Math.floor(Math.random() * 10);
 
   if (computerNumber < 3) {
@@ -24,6 +29,9 @@ function play() {
   } else {
     let computerChoice = 'defend';
   }
+}
+
+function announceWinner() {
   let result = checkWinner(playerChoice, computerChoice);
 
   if (result === 'draw') {
@@ -68,44 +76,45 @@ function play() {
     <img src="shield.png" alt=""><span class = "p-2 mx-2"></span><img src="bow.png" alt="">
     <h3 class = "text-warning">"You Lose!"</h3>`
   }
+}
 
-  function checkWinner(player, computer) {
-    if (player === computer) {
-      return 'draw';
-    }
-    if (player === 'slash') {
-      if (computer === 'shoot') {
-        return 'youCut'
-      }
-    }
-    if (player === 'slash') {
-      if (computer === 'defense') {
-        return 'getBlocked'
-      }
-    }
-    if (player === 'shoot') {
-      if (computer === 'slash') {
-        return 'getCut'
-      }
-    }
-    if (player === 'shoot') {
-      if (computer === 'defense') {
-        return 'youShoot'
-      }
-    }
-    if (player === 'defense') {
-      if (computer === 'slash') {
-        return 'youBlock'
-      }
-    }
-    if (player === 'defense') {
-      if (computer === 'shoot') {
-        return 'getShot'
-      }
+function checkWinner(player, computer) {
+  if (player === computer) {
+    return 'draw';
+  }
+  if (player === 'slash') {
+    if (computer === 'shoot') {
+      return 'youCut'
     }
   }
-
+  if (player === 'slash') {
+    if (computer === 'defense') {
+      return 'getBlocked'
+    }
+  }
+  if (player === 'shoot') {
+    if (computer === 'slash') {
+      return 'getCut'
+    }
+  }
+  if (player === 'shoot') {
+    if (computer === 'defense') {
+      return 'youShoot'
+    }
+  }
+  if (player === 'defense') {
+    if (computer === 'slash') {
+      return 'youBlock'
+    }
+  }
+  if (player === 'defense') {
+    if (computer === 'shoot') {
+      return 'getShot'
+    }
+  }
 }
+
+
 
 play()
 
